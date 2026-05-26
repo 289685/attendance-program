@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+using namespace std;
+
+int main() {
+  string name;
+  int loop = 0;
+  int fail;
+  int i, attendence;
+  ofstream MyFile("filename.txt");
+  cout << "how many students are there\n";
+  cin >> i;
+  do {
+  cout << "enter next students name\n";
+  cin >> name;
+  do {
+  fail = 0;
+  cout << "are they present, yes(1) no(2)\n";
+  cin >> attendence;
+  if (attendence == 1){
+  MyFile << name <<  ", absent\n";
+  }
+  else if (attendence == 2){
+  MyFile << name <<  ", present\n";
+  } else {
+  cout << "ivalid input, try again\n";
+  fail++;
+  }
+  } while (fail == 1);
+  loop++;
+  } while (loop < i);
+  MyFile.close();
+  return 0;
+}
+
+
