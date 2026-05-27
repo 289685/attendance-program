@@ -1,36 +1,51 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
 using namespace std;
 
 int main() {
+  vector<string> names = {};
+  vector<string> attendence = {};
   string name;
+  string date;
   int loop = 0;
   int fail;
-  int i, attendence;
-  ofstream MyFile("filename.txt");
+  int i, attendences;
+
+  cout << "enter date as month-day-year\n";
+  cin >> date;
+  ofstream MyFile (date + ".txt");
   cout << "how many students are there\n";
   cin >> i;
   do {
-  cout << "enter next students name\n";
+  cout << "enter students name\n";
   cin >> name;
+  names.push_back(name);
   do {
   fail = 0;
   cout << "are they present, yes(1) no(2)\n";
-  cin >> attendence;
-  if (attendence == 1){
-  MyFile << name <<  ", attendance: absent\n";
-  }
-  else if (attendence == 2){
+  cin >> attendences;
+  if (attendences == 1){
   MyFile << name <<  ", attendance: present\n";
+  attendence.push_back(", attendance: present\n");
+  }
+  else if (attendences == 2){
+  MyFile << name <<  ", attendance: absent\n";
+  attendence.push_back(", attendance: absent\n");
   } else {
-  cout << "ivalid input, try again\n";
+  cout << "invalid input, try again\n";
   fail++;
   }
   } while (fail == 1);
   loop++;
   } while (loop < i);
+  cout << endl;
+  for (int x = 0; x < names.size(); x++) {
+  cout << names[x] << attendence[x];
+}
   MyFile.close();
+
   return 0;
 }
 
