@@ -1,48 +1,48 @@
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <vector>
+#include <iostream> //input-output
+#include <string> //for string statments
+#include <fstream> //for creating file
+#include <vector> //for vectors
 using namespace std;
 
 int main() {
-  vector<string> names = {};
-  vector<string> attendence = {};
-  string name;
-  string date;
-  int loop = 0;
-  int fail;
-  int i, attendences;
+  vector<string> names = {}; //vector to hold names
+  vector<string> attendance = {}; //vector to hold attendance
+  string name; //to take name
+  string date; //to take date
+  int loop = 0; //loop variable
+  int fail; //for invalid inputs
+  int i, attendances; //temporary variable and attendance
 
-  cout << "enter date as month-day-year\n";
+  cout << "enter date as month-day-year\n"; //asks for date
   cin >> date;
-  ofstream MyFile (date + ".txt");
-  cout << "how many students are there\n";
+  ofstream MyFile (date + ".txt"); //creates file name
+  cout << "how many students are there\n"; //asks for amount of students
   cin >> i;
   do {
-  cout << "enter students name\n";
+  cout << "enter students name\n"; //asks for student names
   cin >> name;
-  names.push_back(name);
+  names.push_back(name); //adds name to vector
   do {
   fail = 0;
-  cout << "are they present, yes(1) no(2)\n";
-  cin >> attendences;
-  if (attendences == 1){
-  MyFile << name <<  ", attendance: present\n";
-  attendence.push_back(", attendance: present\n");
+  cout << "are they present, yes(1) no(2)\n"; //asks if student is present
+  cin >> attendances;
+  if (attendances == 1){
+  MyFile << name <<  ", attendance: present\n"; //1 = yes
+  attendance.push_back(", attendance: present\n");
   }
-  else if (attendences == 2){
-  MyFile << name <<  ", attendance: absent\n";
-  attendence.push_back(", attendance: absent\n");
+  else if (attendances == 2){
+  MyFile << name <<  ", attendance: absent\n"; //2 = no
+  attendance.push_back(", attendance: absent\n");
   } else {
-  cout << "invalid input, try again\n";
+  cout << "invalid input, try again\n"; //otherwise reloops
   fail++;
   }
-  } while (fail == 1);
+  } while (fail == 1); // resets on invalid input
   loop++;
-  } while (loop < i);
+  } while (loop < i); // loops for every student
   cout << endl;
-  for (int x = 0; x < names.size(); x++) {
-  cout << names[x] << attendence[x];
+  for (int x = 0; x < names.size(); x++){  //displays all names and attendances
+  cout << names[x] << attendance[x];
 }
   MyFile.close();
 
