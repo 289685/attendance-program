@@ -13,7 +13,7 @@ int main() {
   int fail; //for invalid inputs
   int i, attendances; //temporary variable and attendance
 
-  cout << "enter date as month-day-year\n"; //asks for date
+  cout << "please enter date with dashes (-) in between month-day-year\n"; //asks for date
   cin >> date;
   ofstream MyFile (date + ".txt"); //creates file name
   cout << "how many students are there\n"; //asks for amount of students
