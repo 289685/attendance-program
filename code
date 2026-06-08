@@ -15,11 +15,11 @@ int main()
     int i, attendances; //temporary variable and attendance
     cout << "please enter date (month-day-year)\n"; //asks for date
     cin >> date;
-    size_t pos = date.find('/'); //finds any / in the date
-
-    if (pos != string::npos)
+    while (date.find('/') != string::npos)
     {
-        date[pos] = '-'; //turns it into a -
+        cout << "Invalid input. Do not use slashes.\n";
+        cout << "Enter date as month-day-year\n";
+        cin >> date;
     }
     ofstream MyFile (date + ".txt"); //creates file name
     cout << "how many students are there\n"; //asks for amount of students
